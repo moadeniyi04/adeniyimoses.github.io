@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adeniyi Moses Olabode – Presentation Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --cream: #f7f4ef;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --rust: #c4522a;
+    --slate: #4a4642;
+    --paper: #ede9e1;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--slate);
+    max-width: 420px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Decorative large circle */
+  .hero-circle {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--paper) 0%, var(--gold-light) 100%);
+    top: 50%; left: 50%;
+    transform: translate(-40%, -50%);
+    z-index: 0;
+  }
+
+  /* Floating slide mockups */
+  .slide-stack {
+    position: relative;
+    z-index: 1;
+    width: 380px;
+  }
+
+  .slide-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+
+  .slide-card:hover { transform: translateY(-4px) scale(1.01); }
+
+  .slide-card-back {
+    position: absolute;
+    top: -20px; right: -30px;
+    width: 320px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transform: rotate(4deg);
+    opacity: 0.7;
+  }
+
+  /* Slide 1 — Dark pitch deck */
+  .slide-dark {
+    background: #0f0e0c;
+    padding: 2rem;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-dark::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 70%);
+  }
+
+  .slide-tag-small {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .slide-title-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: white;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .slide-title-big span { color: var(--gold); }
+
+  .slide-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .slide-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .slide-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* Slide 2 — Light corporate */
+  .slide-light {
+    background: #f9f7f4;
+    padding: 1.5rem;
+    aspect-ratio: 16/9;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .slide-light-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .slide-accent-line {
+    width: 24px; height: 3px;
+    background: var(--rust);
+    border-radius: 2px;
+  }
+
+  .slide-heading-sm {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f0e0c;
+    line-height: 1.3;
+  }
+
+  .slide-body-sm {
+    font-size: 0.42rem;
+    color: #6b6460;
+    line-height: 1.6;
+  }
+
+  .slide-light-right {
+    background: var(--rust);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-icon {
+    width: 40px; height: 40px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── STATS ROW ── */
+  .stats {
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    flex: 1;
+    max-width: 260px;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.5);
+  }
+
+  /* ── PORTFOLIO ── */
+  .section {
+    padding: 7rem 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(15,14,12,0.12);
+  }
+
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--rust); }
+
+  .section-desc {
+    font-size: 0.9rem;
+    color: var(--slate);
+    max-width: 300px;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* Portfolio grid */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .portfolio-item {
+    position: relative;
+    cursor: pointer;
+    group: true;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .portfolio-item:first-child {
+    grid-column: span 2;
+  }
+
+  .portfolio-mock {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+
+  .portfolio-item:hover .portfolio-mock { transform: scale(1.02); }
+
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: rgba(15,14,12,0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+  .portfolio-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .portfolio-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  /* Mock slide designs — each unique */
+  .mock-1 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mock-1::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 30px solid rgba(201,168,76,0.15);
+  }
+
+  .mock-1-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 700;
+    max-width: 60%;
+  }
+
+  .mock-1-title span { color: #e8d5a3; }
+
+  .mock-1-bars { display: flex; gap: 8px; align-items: flex-end; height: 50px; }
+
+  .bar { width: 12px; background: rgba(201,168,76,0.6); border-radius: 3px 3px 0 0; }
+
+  .mock-2 {
+    background: #f0ebe3;
+    padding: 1.5rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    overflow: hidden;
+  }
+
+  .mock-2-left { display: flex; flex-direction: column; justify-content: center; gap: 8px; padding-right: 1rem; }
+  .mock-2-kicker { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); }
+  .mock-2-h { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #0f0e0c; font-weight: 700; line-height: 1.2; }
+  .mock-2-p { font-size: 0.4rem; color: #6b6460; line-height: 1.8; }
+  .mock-2-btn { display: inline-block; padding: 5px 10px; background: var(--rust); color: white; font-size: 0.38rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; width: fit-content; }
+  .mock-2-right { background: #c4522a; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .mock-2-right::before { content: ''; position: absolute; top: -20px; left: -20px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+  .mock-2-icon { font-size: 2.5rem; color: rgba(255,255,255,0.8); }
+
+  .mock-3 {
+    background: #0d0d0d;
+    padding: 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mock-3::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--rust), transparent);
+  }
+
+  .mock-3-label { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+  .mock-3-h { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; font-weight: 700; }
+  .mock-3-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .mock-3-cell { background: rgba(255,255,255,0.05); border-radius: 3px; padding: 6px 8px; }
+  .mock-3-cell-num { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
+  .mock-3-cell-label { font-size: 0.36rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .mock-4 {
+    background: linear-gradient(160deg, #f7f4ef 60%, #e8d5a3 100%);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  .mock-4::after {
+    content: '04';
+    position: absolute;
+    bottom: -10px; right: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+  }
+
+  .mock-4-tag { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); }
+  .mock-4-h { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--ink); font-weight: 700; }
+  .mock-4-pills { display: flex; gap: 4px; flex-wrap: wrap; }
+  .mock-4-pill { padding: 2px 8px; border: 1px solid rgba(15,14,12,0.2); border-radius: 20px; font-size: 0.38rem; color: var(--slate); }
+
+  .mock-5 {
+    background: #2d1b69;
+    padding: 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mock-5::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  }
+
+  .mock-5-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .mock-5-logo { font-family: 'Playfair Display', serif; font-size: 0.8rem; color: rgba(255,255,255,0.8); font-weight: 700; }
+  .mock-5-dot { width: 8px; height: 8px; background: #a78bfa; border-radius: 50%; }
+  .mock-5-h { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; font-weight: 900; line-height: 1.2; }
+  .mock-5-h em { color: #a78bfa; font-style: italic; }
+  .mock-5-bottom { display: flex; gap: 6px; }
+  .mock-5-tag-sm { padding: 3px 8px; background: rgba(255,255,255,0.08); border-radius: 3px; font-size: 0.38rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--paper);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-left { }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .about-quote em { color: var(--rust); font-style: italic; }
+
+  .about-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--slate);
+    margin-bottom: 2.5rem;
+  }
+
+  .about-right { }
+
+  .skills-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .skill-row { }
+
+  .skill-row-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .skill-name {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .skill-pct {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  .skill-track {
+    height: 3px;
+    background: rgba(15,14,12,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+    border-radius: 2px;
+    transform-origin: left;
+    animation: fillBar 1.5s ease forwards;
+    transform: scaleX(0);
+  }
+
+  @keyframes fillBar { to { transform: scaleX(1); } }
+
+  /* ── TOOLS ── */
+  .tools-section {
+    padding: 5rem 6rem;
+    background: var(--ink);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .tools-section::before {
+    content: 'TOOLS';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 18vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.02);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tool-pill {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: rgba(247,244,239,0.7);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    border-radius: 40px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .tool-pill:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .tool-pill.featured {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 8rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-left .section-title { margin-bottom: 1.5rem; }
+  .contact-sub { font-size: 0.95rem; color: var(--slate); line-height: 1.7; margin-bottom: 2.5rem; }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--slate);
+  }
+
+  .contact-line strong { color: var(--ink); font-weight: 500; }
+
+  .contact-right {
+    background: var(--paper);
+    border-radius: 8px;
+    padding: 3rem;
+    border: 1px solid rgba(15,14,12,0.08);
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .form-input, .form-textarea {
+    padding: 0.8rem 1rem;
+    background: white;
+    border: 1px solid rgba(15,14,12,0.12);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: border-color 0.3s;
+    outline: none;
+    resize: none;
+  }
+
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+
+  .form-textarea { height: 100px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,244,239,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 6rem 2rem 4rem; }
+    .section { padding: 5rem 2rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item:first-child { grid-column: span 1; }
+    .about-section, .contact-section { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .section-desc { text-align: left; }
+    .tools-section { padding: 5rem 2rem; }
+    .stats { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Adeniyi Moses Olabode</div>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for Freelance</div>
+    <h1 class="hero-title">
+      Presentation<br>
+      <em>Designer</em><br>
+      & AI Trainer
+    </h1>
+    <p class="hero-sub">
+      I craft high-stakes pitch decks, corporate presentations, and visual stories that command attention — combining editorial precision with strategic communication.
+    </p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary">View Portfolio ↓</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circle"></div>
+    <div class="slide-stack">
+      <!-- Back card -->
+      <div class="slide-card-back">
+        <div class="slide-light">
+          <div class="slide-light-left">
+            <div class="slide-accent-line"></div>
+            <div class="slide-heading-sm">Strategic Growth Report 2024</div>
+            <div class="slide-body-sm">Quarterly insights for executive stakeholders across global markets and operations.</div>
+          </div>
+          <div class="slide-light-right">
+            <div class="slide-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Front card -->
+      <div class="slide-card">
+        <div class="slide-dark">
+          <div class="slide-tag-small">Investor Pitch Deck — Series A</div>
+          <div class="slide-title-big">Building the Future of <span>AI Infrastructure</span></div>
+          <div class="slide-bar-row">
+            <div class="slide-bar"><div class="slide-bar-fill" style="width:82%"></div></div>
+            <div class="slide-bar"><div class="slide-bar-fill" style="width:65%"></div></div>
+            <div class="slide-bar"><div class="slide-bar-fill" style="width:91%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <span class="stat-number">50+</span>
+    <span class="stat-label">Decks Designed</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">3+</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">100%</span>
+    <span class="stat-label">Remote Ready</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">5★</span>
+    <span class="stat-label">Client Satisfaction</span>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <div class="section-header fade-up">
+    <div>
+      <span class="section-num">01 / Selected Work</span>
+      <h2 class="section-title">Recent <em>Projects</em></h2>
+    </div>
+    <p class="section-desc">A selection of presentation design work spanning pitch decks, reports, and data visualisations.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <!-- Item 1 — large -->
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-mock">
+        <div class="mock-1" style="height:100%">
+          <div>
+            <div class="slide-tag-small">Series A / Investor Deck</div>
+            <div class="mock-1-title">Scaling <span>Fintech</span><br>Across Emerging Markets</div>
+          </div>
+          <div class="mock-1-bars">
+            <div class="bar" style="height:30px; background:rgba(201,168,76,0.4)"></div>
+            <div class="bar" style="height:45px; background:rgba(201,168,76,0.6)"></div>
+            <div class="bar" style="height:35px; background:rgba(201,168,76,0.5)"></div>
+            <div class="bar" style="height:50px; background:var(--gold)"></div>
+            <div class="bar" style="height:28px; background:rgba(201,168,76,0.4)"></div>
+            <div class="bar" style="height:42px; background:rgba(201,168,76,0.55)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-cat">Investor Pitch Deck</div>
+        <div class="portfolio-name">Fintech Growth Deck — Series A</div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-mock">
+        <div class="mock-3" style="height:100%">
+          <div>
+            <div class="mock-3-label">Annual Report / Data Deck</div>
+            <div class="mock-3-h">2024 Performance<br>Overview</div>
+          </div>
+          <div class="mock-3-grid">
+            <div class="mock-3-cell">
+              <div class="mock-3-cell-num">$4.2M</div>
+              <div class="mock-3-cell-label">Revenue</div>
+            </div>
+            <div class="mock-3-cell">
+              <div class="mock-3-cell-num">138%</div>
+              <div class="mock-3-cell-label">Growth</div>
+            </div>
+            <div class="mock-3-cell">
+              <div class="mock-3-cell-num">2.4K</div>
+              <div class="mock-3-cell-label">Clients</div>
+            </div>
+            <div class="mock-3-cell">
+              <div class="mock-3-cell-num">18</div>
+              <div class="mock-3-cell-label">Markets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-cat">Data Visualisation</div>
+        <div class="portfolio-name">Annual Performance Deck</div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-mock">
+        <div class="mock-2" style="height:100%">
+          <div class="mock-2-left">
+            <div class="mock-2-kicker">Corporate Presentation</div>
+            <div class="mock-2-h">Brand Strategy<br>& Market Entry</div>
+            <div class="mock-2-p">Strategic positioning for new market entry across Sub-Saharan Africa with full visual narrative.</div>
+            <div class="mock-2-btn">View Strategy →</div>
+          </div>
+          <div class="mock-2-right">
+            <div class="mock-2-icon">📊</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-cat">Corporate Strategy</div>
+        <div class="portfolio-name">Brand & Market Entry Deck</div>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-mock">
+        <div class="mock-4" style="height:100%">
+          <div class="mock-4-tag">Product Launch</div>
+          <div class="mock-4-h">SaaS Platform<br>Launch Deck 2024</div>
+          <div class="mock-4-pills">
+            <div class="mock-4-pill">Minimalist</div>
+            <div class="mock-4-pill">Editorial</div>
+            <div class="mock-4-pill">22 Slides</div>
+            <div class="mock-4-pill">PowerPoint</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-cat">Product Launch</div>
+        <div class="portfolio-name">SaaS Platform Pitch</div>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-mock">
+        <div class="mock-5" style="height:100%">
+          <div class="mock-5-top">
+            <div class="mock-5-logo">AP Studio</div>
+            <div class="mock-5-dot"></div>
+          </div>
+          <div class="mock-5-h">AI in <em>Healthcare</em>:<br>The Next Frontier</div>
+          <div class="mock-5-bottom">
+            <div class="mock-5-tag-sm">Research</div>
+            <div class="mock-5-tag-sm">Keynote</div>
+            <div class="mock-5-tag-sm">30 Slides</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-cat">Research Presentation</div>
+        <div class="portfolio-name">AI Healthcare Keynote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-left fade-up">
+    <span class="section-num">02 / About Me</span>
+    <blockquote class="about-quote">
+      "Great slides don't just look good — they <em>tell the right story</em> to the right audience."
+    </blockquote>
+    <p class="about-body">
+      I'm Adeniyi Moses Olabode, a Presentation Designer and Freelance AI Trainer with a B.Sc. in Mass Communication. My background in media and visual storytelling gives me a natural eye for how information should be structured, paced, and presented to create impact.
+    </p>
+    <p class="about-body">
+      I specialise in high-stakes pitch decks, corporate reports, and data visualisations — working with PowerPoint, Google Slides, and Canva to create decks that are clean, persuasive, and visually premium. As an AI trainer, I evaluate and improve AI-generated presentation content to meet professional standards.
+    </p>
+    <a href="#contact" class="btn-primary">Let's Work Together →</a>
+  </div>
+  <div class="about-right fade-up">
+    <span class="section-num" style="display:block; margin-bottom: 2rem;">Core Skills</span>
+    <div class="skills-list">
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">Microsoft PowerPoint</span>
+          <span class="skill-pct">95%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">Visual Storytelling</span>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">Canva & Google Slides</span>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">Data Visualisation</span>
+          <span class="skill-pct">85%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">AI Content Evaluation</span>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top">
+          <span class="skill-name">Brand & Typography</span>
+          <span class="skill-pct">87%</span>
+        </div>
+        <div class="skill-track"><div class="skill-fill" style="width:87%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-section">
+  <div style="text-align:center; margin-bottom: 3rem; position: relative; z-index:1;">
+    <span class="section-num" style="color: rgba(201,168,76,0.6);">03 / Toolkit</span>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: white; font-weight: 900; margin-top: 0.5rem;">Tools I Work With</h2>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-pill featured">Microsoft PowerPoint</div>
+    <div class="tool-pill featured">Google Slides</div>
+    <div class="tool-pill featured">Canva Pro</div>
+    <div class="tool-pill">Figma</div>
+    <div class="tool-pill">Adobe Illustrator</div>
+    <div class="tool-pill">Keynote</div>
+    <div class="tool-pill">ChatGPT</div>
+    <div class="tool-pill">Claude AI</div>
+    <div class="tool-pill">Notion</div>
+    <div class="tool-pill">Google Workspace</div>
+    <div class="tool-pill">Microsoft Office Suite</div>
+    <div class="tool-pill">Gamma.app</div>
+    <div class="tool-pill">Beautiful.ai</div>
+    <div class="tool-pill">Loom</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left fade-up">
+    <span class="section-num">04 / Contact</span>
+    <h2 class="section-title">Let's <em>Create</em><br>Together</h2>
+    <p class="contact-sub">Available for freelance projects, AI training contracts, and long-term collaborations. I respond within 24 hours.</p>
+    <div class="contact-detail">
+      <div class="contact-line">
+        <span>📧</span>
+        <span><strong>Email:</strong> moadeniyi04@gmail.com</span>
+      </div>
+      <div class="contact-line">
+        <span>📍</span>
+        <span><strong>Location:</strong> Nigeria / UK (Remote)</span>
+      </div>
+      <div class="contact-line">
+        <span>⏱</span>
+        <span><strong>Availability:</strong> Immediate</span>
+      </div>
+      <div class="contact-line">
+        <span>💼</span>
+        <span><strong>Open to:</strong> Freelance & Contract</span>
+      </div>
+    </div>
+    <a href="mailto:moadeniyi04@gmail.com" class="btn-primary">Send a Message →</a>
+  </div>
+  <div class="contact-right fade-up">
+    <div class="contact-form">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">Quick Enquiry</h3>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="John Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="john@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Project Type</label>
+        <input type="text" class="form-input" placeholder="Pitch Deck / Corporate Presentation">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="btn-primary" style="cursor:pointer; border:none; width:100%; justify-content:center;">
+        Send Enquiry →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Adeniyi Moses Olabode</span> — Presentation Designer & AI Trainer &nbsp;|&nbsp; Built with precision.</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Skill bars animate on scroll
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.animation = 'fillBar 1.5s ease forwards';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.about-right').forEach(el => skillObserver.observe(el));
+</script>
+</body>
+</html>
